@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CreatorBoost Hub - Grow Your YouTube Channel Faster</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+        body { background-color: #0b0f19; color: #ffffff; display: flex; justify-content: center; min-height: 100vh; }
+        .app-container { width: 100%; max-width: 480px; background: #0b0f19; min-height: 100vh; position: relative; box-shadow: 0 0 30px rgba(0,0,0,0.8); padding-bottom: 40px; }
+        
+        /* Header */
+        .header { display: flex; justify-content: space-between; align-items: center; padding: 16px 20px; background: #0b0f19; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(255,255,255,0.08); }
+        .logo-area { display: flex; align-items: center; gap: 10px; }
+        .logo-icon { background: #ff0000; color: white; width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; box-shadow: 0 0 15px rgba(255,0,0,0.5); }
+        .logo-text h1 { font-size: 18px; font-weight: 700; letter-spacing: 0.5px; }
+        .logo-text p { font-size: 10px; color: #a0aec0; }
+        .menu-btn { font-size: 22px; color: #ffffff; cursor: pointer; }
+
+        /* Banner */
+        .banner-section { padding: 15px 20px; }
+        .main-banner { width: 100%; border-radius: 14px; overflow: hidden; box-shadow: 0 10px 30px rgba(255,0,0,0.2); }
+        .main-banner img { width: 100%; display: block; border-radius: 14px; }
+
+        /* Services Section */
+        .services-section { padding: 10px 20px; }
+        .section-title { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+        .section-subtitle { font-size: 12px; color: #a0aec0; margin-bottom: 15px; }
+        
+        .services-grid { display: flex; flex-direction: column; gap: 16px; }
+        .service-card { background: linear-gradient(145deg, #131b2e, #0f172a); border-radius: 16px; padding: 18px; border: 1px solid rgba(255,255,255,0.08); position: relative; box-shadow: 0 8px 25px rgba(0,0,0,0.4); }
+        .service-card.red-glow { border-color: rgba(255,0,0,0.3); box-shadow: 0 0 25px rgba(255,0,0,0.15); }
+        .service-card.blue-glow { border-color: rgba(0,123,255,0.3); box-shadow: 0 0 25px rgba(0,123,255,0.15); }
+        .service-card.gold-glow { border-color: rgba(255,215,0,0.3); box-shadow: 0 0 25px rgba(255,215,0,0.15); }
+        
+        .badge-available { position: absolute; top: 15px; right: 15px; background: #10b981; color: white; font-size: 10px; font-weight: 600; padding: 3px 8px; border-radius: 20px; display: flex; align-items: center; gap: 4px; }
+        
+        .service-content { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
+        .service-icon-box { width: 60px; height: 60px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 28px; }
+        .red-box { background: rgba(255,0,0,0.15); color: #ff4d4d; }
+        .blue-box { background: rgba(0,123,255,0.15); color: #3b82f6; }
+        .gold-box { background: rgba(255,215,0,0.15); color: #fbbf24; }
+        
+        .service-info h3 { font-size: 16px; font-weight: 700; margin-bottom: 2px; }
+        .service-info p { font-size: 12px; color: #a0aec0; }
+        
+        .service-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 12px; }
+        .price { font-size: 20px; font-weight: 800; color: #ffffff; }
+        .buy-btn { background: linear-gradient(135deg, #ff2a2a, #cc0000); color: white; border: none; padding: 10px 22px; border-radius: 8px; font-weight: 700; font-size: 13px; cursor: pointer; transition: 0.2s; box-shadow: 0 4px 15px rgba(255,0,0,0.4); }
+        .buy-btn.blue { background: linear-gradient(135deg, #007bff, #0056b3); box-shadow: 0 4px 15px rgba(0,123,255,0.4); }
+        .buy-btn.gold { background: linear-gradient(135deg, #d97706, #b45309); box-shadow: 0 4px 15px rgba(217,119,6,0.4); }
+        .buy-btn:active { transform: scale(0.96); }
+
+        /* How it works banner */
+        .how-section { padding: 15px 20px; }
+        .how-banner { width: 100%; border-radius: 14px; overflow: hidden; }
+        .how-banner img { width: 100%; display: block; border-radius: 14px; }
+
+        /* Happy Customers */
+        .reviews-section { padding: 15px 20px; }
+        .reviews-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+        .view-all { background: #ff2a2a; color: white; border: none; padding: 5px 12px; border-radius: 20px; font-size: 11px; font-weight: 600; cursor: pointer; }
+        
+        .review-card { background: #131b2e; border-radius: 12px; padding: 12px; margin-bottom: 10px; border: 1px solid rgba(255,255,255,0.06); }
+        .reviewer-info { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+        .reviewer-avatar { width: 32px; height: 32px; border-radius: 50%; background: #374151; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 14px; color: #fff; }
+        .reviewer-details h4 { font-size: 13px; font-weight: 600; }
+        .stars { color: #f59e0b; font-size: 11px; }
+        .review-text { font-size: 11px; color: #cbd5e1; line-height: 1.4; }
+
+        /* Stats Bar */
+        .stats-bar { display: flex; justify-content: space-around; background: #131b2e; margin: 15px 20px; padding: 14px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.06); text-align: center; }
+        .stat-item h3 { font-size: 15px; font-weight: 700; color: #fff; }
+        .stat-item p { font-size: 10px; color: #94a3b8; }
+
+        /* Support Buttons */
+        .support-buttons { padding: 10px 20px 20px; display: flex; gap: 10px; }
+        .whatsapp-support-btn { flex: 1; background: #25d366; color: white; border: none; padding: 12px; border-radius: 10px; font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer; text-decoration: none; box-shadow: 0 4px 15px rgba(37,211,102,0.3); }
+        .telegram-support-btn { flex: 1; background: #0088cc; color: white; border: none; padding: 12px; border-radius: 10px; font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer; text-decoration: none; box-shadow: 0 4px 15px rgba(0,136,204,0.3); }
+
+        /* Footer */
+        .footer { text-align: center; padding: 10px; font-size: 10px; color: #64748b; }
+
+        /* Modal Overlays */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 1000; display: none; align-items: center; justify-content: center; padding: 20px; }
+        .modal-content { background: #131b2e; width: 100%; max-width: 420px; border-radius: 18px; padding: 20px; border: 1px solid rgba(255,255,255,0.12); box-shadow: 0 20px 40px rgba(0,0,0,0.8); max-height: 90vh; overflow-y: auto; }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 10px; }
+        .modal-header h3 { font-size: 16px; font-weight: 700; }
+        .close-modal { font-size: 20px; color: #a0aec0; cursor: pointer; background: none; border: none; }
+        
+        .form-group { margin-bottom: 12px; }
+        .form-group label { display: block; font-size: 11px; font-weight: 600; color: #cbd5e1; margin-bottom: 4px; }
+        .form-control { width: 100%; background: #0b0f19; border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 10px; color: white; font-size: 13px; outline: none; }
+        .form-control:focus { border-color: #ff0000; }
+        
+        .modal-btn { width: 100%; background: linear-gradient(135deg, #ff2a2a, #cc0000); color: white; border: none; padding: 12px; border-radius: 8px; font-weight: 700; font-size: 14px; cursor: pointer; margin-top: 10px; box-shadow: 0 4px 15px rgba(255,0,0,0.4); }
+        
+        /* QR Modal specific */
+        .qr-box { background: white; padding: 15px; border-radius: 12px; text-align: center; margin: 10px 0; }
+        .qr-box img { width: 180px; height: 180px; object-fit: contain; }
+        .timer-box { background: rgba(255,0,0,0.1); border: 1px solid rgba(255,0,0,0.3); border-radius: 8px; padding: 8px; text-align: center; font-size: 13px; font-weight: 700; color: #ff4d4d; margin-bottom: 10px; }
+        .upload-section { margin-top: 10px; }
+        .file-input-label { display: block; border: 2px dashed rgba(255,255,255,0.2); padding: 10px; border-radius: 8px; text-align: center; font-size: 11px; color: #a0aec0; cursor: pointer; background: #0b0f19; }
+        .file-input-label:hover { border-color: #ff0000; color: #fff; }
+    </style>
+</head>
+<body>
+
+<div class="app-container">
+    <!-- Header -->
+    <div class="header">
+        <div class="logo-area">
+            <div class="logo-icon"><i class="fa-solid fa-play"></i></div>
+            <div class="logo-text">
+                <h1>CreatorBoost Hub</h1>
+                <p>Grow Your YouTube Channel Faster</p>
+            </div>
+        </div>
+        <div class="menu-btn"><i class="fa-solid fa-bars"></i></div>
+    </div>
+
+    <!-- Banner Section -->
+    <div class="banner-section">
+        <div class="main-banner">
+            <img src="127056.jpg" alt="YouTube Growth Services">
+        </div>
+    </div>
+
+    <!-- Services Section -->
+    <div class="services-section">
+        <div class="section-title">Our Services</div>
+        <div class="section-subtitle">Choose the best service for your YouTube channel</div>
+        
+        <div class="services-grid">
+            <!-- Service 1: Subscribers -->
+            <div class="service-card red-glow">
+                <div class="badge-available"><i class="fa-solid fa-circle-check"></i> Available</div>
+                <div class="service-content">
+                    <div class="service-icon-box red-box"><i class="fa-solid fa-users"></i></div>
+                    <div class="service-info">
+                        <h3>YouTube Subscribers</h3>
+                        <p>Quantity: 1,000 Subscribers</p>
+                    </div>
+                </div>
+                <div class="service-footer">
+                    <div class="price">₹2,000</div>
+                    <button class="buy-btn" onclick="openStep1('YouTube Subscribers', '₹2,000', '126999.png')">Buy Now →</button>
+                </div>
+            </div>
+
+            <!-- Service 2: Watch Time -->
+            <div class="service-card blue-glow">
+                <div class="badge-available"><i class="fa-solid fa-circle-check"></i> Available</div>
+                <div class="service-content">
+                    <div class="service-icon-box blue-box"><i class="fa-solid fa-clock"></i></div>
+                    <div class="service-info">
+                        <h3>YouTube Watch Time</h3>
+                        <p>Quantity: 4,000 Hours</p>
+                    </div>
+                </div>
+                <div class="service-footer">
+                    <div class="price">₹4,000</div>
+                    <button class="buy-btn blue" onclick="openStep1('YouTube Watch Time', '₹4,000', '127000.png')">Buy Now →</button>
+                </div>
+            </div>
+
+            <!-- Service 3: Monetized Channel -->
+            <div class="service-card gold-glow">
+                <div class="badge-available"><i class="fa-solid fa-circle-check"></i> Available</div>
+                <div class="service-content">
+                    <div class="service-icon-box gold-box"><i class="fa-solid fa-shield-halved"></i></div>
+                    <div class="service-info">
+                        <h3>Monetized Channel</h3>
+                        <p>Quantity: 1 Monetized Channel</p>
+                    </div>
+                </div>
+                <div class="service-footer">
+                    <div class="price">₹6,500</div>
+                    <button class="buy-btn gold" onclick="openStep1('Monetized Channel', '₹6,500', '127018.png')">Buy Now →</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- How It Works -->
+    <div class="how-section">
+        <div class="how-banner">
+            <img src="127058.jpg" alt="How It Works">
+        </div>
+    </div>
+
+    <!-- Happy Customers -->
+    <div class="reviews-section">
+        <div class="reviews-header">
+            <div class="section-title" style="font-size:16px;">Happy Customers</div>
+            <button class="view-all">View All Reviews</button>
+        </div>
+        
+        <div class="review-card">
+            <div class="reviewer-info">
+                <div class="reviewer-avatar" style="background:#dc2626;">R</div>
+                <div class="reviewer-details">
+                    <h4>Rohit Kumar</h4>
+                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                </div>
+            </div>
+            <p class="review-text">Excellent service! 1K subscribers received in just 2 days. Highly recommended!</p>
+        </div>
+
+        <div class="review-card">
+            <div class="reviewer-info">
+                <div class="reviewer-avatar" style="background:#2563eb;">N</div>
+                <div class="reviewer-details">
+                    <h4>Neha Singh</h4>
+                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                </div>
+            </div>
+            <p class="review-text">Very professional and trusted platform. My watch time increased as promised.</p>
+        </div>
+    </div>
+
+    <!-- Stats Bar -->
+    <div class="stats-bar">
+        <div class="stat-item">
+            <h3>1.6K+</h3>
+            <p>Happy Customers</p>
+        </div>
+        <div class="stat-item">
+            <h3>4.9/5</h3>
+            <p>Average Rating</p>
+        </div>
+        <div class="stat-item">
+            <h3>1.5K+</h3>
+            <p>Total Visitors</p>
+        </div>
+    </div>
+
+    <!-- Support Buttons -->
+    <div class="support-buttons">
+        <a href="https://wa.me/916207120625?text=Hello%20CreatorBoost%20Hub,%20I%20need%20support." target="_blank" class="whatsapp-support-btn">
+            <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
+        </a>
+        <a href="https://t.me/TrueCrazyMax" target="_blank" class="telegram-support-btn">
+            <i class="fa-brands fa-telegram"></i> Telegram Support
+        </a>
+    </div>
+
+    <div class="footer">
+        © 2025 CreatorBoost Hub | All Rights Reserved
+    </div>
+</div>
+
+<!-- STEP 1 MODAL: Details Form -->
+<div class="modal-overlay" id="formModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 id="modalServiceTitle">Order Service</h3>
+            <button class="close-modal" onclick="closeModals()">&times;</button>
+        </div>
+        <form id="orderForm" onsubmit="proceedToQR(event)">
+            <div class="form-group">
+                <label>Customer Name</label>
+                <input type="text" class="form-control" id="custName" placeholder="Enter your full name" required>
+            </div>
+            <div class="form-group">
+                <label>Customer Address</label>
+                <input type="text" class="form-control" id="custAddress" placeholder="Enter your city/address" required>
+            </div>
+            <div class="form-group">
+                <label>YouTube Channel URL</label>
+                <input type="url" class="form-control" id="ytUrl" placeholder="https://youtube.com/@yourchannel" required>
+            </div>
+            <div class="form-group">
+                <label>Selected Service & Price</label>
+                <input type="text" class="form-control" id="serviceDisplay" readonly style="background:#131b2e; color:#ff4d4d; font-weight:700;">
+            </div>
+            <button type="submit" class="modal-btn">Proceed to Pay Now →</button>
+        </form>
+    </div>
+</div>
+
+<!-- STEP 2 MODAL: QR & Payment Proof -->
+<div class="modal-overlay" id="qrModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Scan QR & Complete Payment</h3>
+            <button class="close-modal" onclick="closeModals()">&times;</button>
+        </div>
+        <div class="timer-box" id="timerDisplay">Time Remaining: 10:00</div>
+        <div class="qr-box">
+            <img id="qrImageTag" src="" alt="Payment QR Code">
+            <p style="font-size:12px; color:#111; margin-top:5px; font-weight:700;" id="qrPriceLabel"></p>
+        </div>
+        
+        <div class="form-group upload-section">
+            <label>Upload Payment Proof (Screenshot)</label>
+            <label class="file-input-label" id="fileLabel">
+                <i class="fa-solid fa-cloud-arrow-up"></i> Click here to upload screenshot (.jpg / .png)
+                <input type="file" id="proofFile" accept="image/*" style="display:none;" onchange="handleFileSelect(event)">
+            </label>
+        </div>
+
+        <button type="button" class="modal-btn" onclick="confirmOrderWhatsApp()" style="background:linear-gradient(135deg, #25d366, #128c7e);">
+            <i class="fa-brands fa-whatsapp"></i> Confirm Your Order
+        </button>
+    </div>
+</div>
+
+<script>
+    let currentService = '';
+    let currentPrice = '';
+    let currentQR = '';
+    let uploadedFileName = 'Not uploaded';
+    let countdownInterval;
+
+    function openStep1(serviceName, price, qrImage) {
+        currentService = serviceName;
+        currentPrice = price;
+        currentQR = qrImage;
+        
+        document.getElementById('modalServiceTitle').innerText = serviceName;
+        document.getElementById('serviceDisplay').value = serviceName + ' (' + price + ')';
+        document.getElementById('formModal').style.display = 'flex';
+    }
+
+    function proceedToQR(e) {
+        e.preventDefault();
+        document.getElementById('formModal').style.display = 'none';
+        
+        document.getElementById('qrImageTag').src = currentQR;
+        document.getElementById('qrPriceLabel').innerText = 'Amount to Pay: ' + currentPrice;
+        document.getElementById('qrModal').style.display = 'flex';
+        
+        startTimer(600); // 10 minutes timer
+    }
+
+    function startTimer(duration) {
+        clearInterval(countdownInterval);
+        let timer = duration, minutes, seconds;
+        const display = document.getElementById('timerDisplay');
+        
+        countdownInterval = setInterval(function () {
+            minutes = parseInt(timer / 60, 10);
+            seconds = parseInt(timer % 60, 10);
+
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+            display.textContent = "Time Remaining: " + minutes + ":" + seconds;
+
+            if (--timer < 0) {
+                clearInterval(countdownInterval);
+                display.textContent = "QR Code Expired. Please restart order.";
+            }
+        }, 1000);
+    }
+
+    function handleFileSelect(event) {
+        const file = event.target.files[0];
+        if (file) {
+            uploadedFileName = file.name;
+            document.getElementById('fileLabel').innerHTML = '<i class="fa-solid fa-check-circle" style="color:#10b981;"></i> Uploaded: ' + file.name;
+        }
+    }
+
+    function confirmOrderWhatsApp() {
+        const name = document.getElementById('custName').value;
+        const address = document.getElementById('custAddress').value;
+        const ytUrl = document.getElementById('ytUrl').value;
+        
+        const message = `New Order Details:%0A` +
+                        `- Service: ${currentService}%0A` +
+                        `- Price: ${currentPrice}%0A` +
+                        `- Customer Name: ${name}%0A` +
+                        `- Address: ${address}%0A` +
+                        `- Channel URL: ${ytUrl}%0A` +
+                        `- Payment Proof: ${uploadedFileName}%0A` +
+                        `%0APlease verify my payment and start the order!`;
+        
+        const whatsappUrl = `https://wa.me/916207120625?text=${message}`;
+        window.open(whatsappUrl, '_blank');
+    }
+
+    function closeModals() {
+        document.getElementById('formModal').style.display = 'none';
+        document.getElementById('qrModal').style.display = 'none';
+        clearInterval(countdownInterval);
+    }
+</script>
+
+</body>
+</html>
